@@ -1,11 +1,18 @@
 --
--- V2: Create USER TABLE
+-- V3: Create Schedule TABLE
 --
 --
-CREATE TABLE Users (
-  user_id INT NOT NULL AUTO_INCREMENT,
-  email VARCHAR(80) NOT NULL,
-  name VARCHAR(50) NOT NULL,
-  PRIMARY KEY (user_id),
-  UNIQUE INDEX (email)
-) DEFAULT CHARSET=utf8;
+CREATE TABLE `Schedule`(
+`event_id` int NOT NULL AUTO_INCREMENT,
+`title` varchar(50) NOT NULL,
+`content` text NOT NULL,
+`start_date` date NOT NULL,
+`start_time` time NOT NULL,
+`end_date` date NOT NULL,
+`end_time` time NOT NULL,
+`allday` tinyint(1) default 0,
+`repeats` int(5) default 0,
+`day` int,
+`sub_date` int,
+PRIMARY KEY(event_id))
+ENGINE=InnoDB DEFAULT CHARSET `utf8`;
