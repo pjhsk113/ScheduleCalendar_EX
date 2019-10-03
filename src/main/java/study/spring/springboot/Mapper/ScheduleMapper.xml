@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="study.spring.springboot.Mapper.ScheduleMapper">
+ <resultMap id="ScheduleMap"
+		type="study.spring.springboot.Model.Schedule">
+		<!-- Beans의 멤버변수(property)이름과 대상 테이블의 컬럼(column)을 연결한다. -->
+		<result property="event_id" column="event_id" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="start_date" column="start_date" />
+		<result property="start_time" column="start_time" />
+		<result property="end_date" column="end_date" />
+		<result property="end_time" column="end_time" />
+		<result property="allday" column="allday" />
+		<result property="repeats" column="repeats" />
+		<result property="repeats" column="repeats" />
+		<result property="day" column="day" />
+		<result property="sub_date" column="sub_date" />
+		
+	</resultMap>
+<select id="ScheduleList" parameterType="study.spring.springboot.Model.Schedule" resultMap="ScheduleMap">
+		<!-- "#{변수명}" 으로 표시된 곳에 멤버변수가 치환된다. -->
+		SELECT * FROM schedule order by start_date;
+</select>
+
+<select id="DaliyList" parameterType="study.spring.springboot.Model.Schedule" resultMap="ScheduleMap">
+		<!-- "#{변수명}" 으로 표시된 곳에 멤버변수가 치환된다. -->
+		SELECT * FROM schedule WHERE day= #{day};
+</select>
+
+<insert id="addItem"
+		parameterType="study.spring.springboot.Model.Schedule"
+		useGeneratedKeys="true" keyProperty="event_id">
+		INSERT INTO Schedule
+		(title,content,start_date,start_time,end_date,end_time,allday,repeats,day,sub_date)
+		VALUES
+		(#{title},#{content},#{start_date}, #{start_time}, #{end_date},
+		#{end_time},#{allday},#{repeats},#{day},#{sub_date});
+</insert>
+
+<delete id="deleteSchedule"
+		parameterType="study.spring.springboot.Model.Schedule">
+		DELETE FROM Schedule WHERE event_id=#{event_id};
+</delete>
+
+
+
+</mapper>
