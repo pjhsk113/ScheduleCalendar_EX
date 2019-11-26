@@ -1,5 +1,7 @@
 # ScheduleCalendar_Tutorial
 SpringBoot로 구현한 간단한 스케줄 캘린더
+![](img/image1.JPG)
+
 # 19/09/24
 Front 구현(HTML, CSS, JS)
 # 19/09/26
